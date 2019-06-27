@@ -1,10 +1,12 @@
-SetEnvIf Request_URI "\.(jpe?g|png)$" _image_request
+# .webp拡張子はMIMEタイプimage/webpで配信
+AddType image/webp .webp
 
+# WebP画像があれば対応ブラウザに限り配信
 RewriteEngine On
 RewriteCond %{HTTP_ACCEPT} image/webp
 RewriteCond %{SCRIPT_FILENAME}.webp -f
 RewriteRule .(jpe?g|png)$ %{SCRIPT_FILENAME}.webp [T=image/webp]
 
+# CDN向けにVary: Acceptヘッダを付与
+SetEnvIf Request_URI "\.(jpe?g|png)$" _image_request
 Header append Vary Accept env=_image_request
-
-AddType image/webp .webp

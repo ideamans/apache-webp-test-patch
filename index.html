@@ -7,10 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     img { max-width: 100% }
+    .color-tip { padding: 12px 8px; color: white }
+    .webp { background-color: #009292 }
+    .png { background-color: #eb4891 }
   </style>
 </head>
 
 <body>
+  <p>Apacheの設定(.htaccess)により対応ブラウザにのみWebP画像を配信するテストです。</p>
+  <p>WebP対応ブラウザと非対応ブラウザで異なる画像が表示されます。</p>
+  <p>対応ブラウザ(ChromeやFirefox) → <span class="color-tip webp">WebP</span></p>
+  <p>非対応ブラウザ(Internet ExplorerやSafari) → <span class="color-tip png">PNG</span></p>
   <img src="sample.png">
 </body>
 
