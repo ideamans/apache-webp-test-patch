@@ -1,0 +1,10 @@
+SetEnvIf Request_URI "\.(jpe?g|png)$" _image_request
+
+RewriteEngine On
+RewriteCond %{HTTP_ACCEPT} image/webp
+RewriteCond %{SCRIPT_FILENAME}.webp -f
+RewriteRule .(jpe?g|png)$ %{SCRIPT_FILENAME}.webp [T=image/webp]
+
+Header append Vary Accept env=_image_request
+
+AddType image/webp .webp
